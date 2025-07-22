@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded', () => {
+
 // elements
 const video = document.getElementById('video');
 const canvas = document.getElementById('output');
@@ -247,3 +249,5 @@ async function main() {
 }
 
 main();
+});
+  
