@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Advanced Posture Imbalance Analyzer</title>
+<link rel="stylesheet" href="style.css" />
+<!-- TensorFlow.js and MoveNet -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection/dist/movenet.min.js"></script>
+</head>
+<body>
+  <h1>Advanced Posture Imbalance Analyzer</h1>
+  <div id="container">
+    <video id="video" playsinline></video>
+    <canvas id="output"></canvas>
+  </div>
+
+  <section id="metrics">
+    <h2>Live Posture Metrics</h2>
+    <ul>
+      <li>Head Horizontal Offset: <span id="headOffset">--</span> px</li>
+      <li>Head Tilt: <span id="headTilt">--</span>°</li>
+      <li>Shoulder Tilt: <span id="shoulderTilt">--</span>°</li>
+      <li>Spine Tilt: <span id="spineTilt">--</span>°</li>
+      <li>Hip Tilt: <span id="hipTilt">--</span>°</li>
+      <li>Pelvic Tilt: <span id="pelvicTilt">--</span>°</li>
+      <li>Knee Valgus/Varus Angle (L / R): <span id="kneeAngleLeft">--</span>° / <span id="kneeAngleRight">--</span>°</li>
+    </ul>
+    <button id="captureBtn">Capture Posture Report</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
