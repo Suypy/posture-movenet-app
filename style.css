@@ -25,7 +25,12 @@ h1 {
 
 /* Video hidden but used for detection */
 #video {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
 }
 
 /* Canvas for drawing skeleton */
