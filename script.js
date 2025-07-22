@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 
 // elements
-const video = document.getElementById('video');
+const video = document.getElementById("video");
 const canvas = document.getElementById('output');
 const ctx = canvas.getContext('2d');
 
