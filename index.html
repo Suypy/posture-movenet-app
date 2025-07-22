@@ -2,40 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Advanced Posture Imbalance Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Posture Analysis</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- TensorFlow.js and MoveNet -->
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@4.0.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.0/dist/pose-detection.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-  <h1>Advanced Posture Imbalance Analyzer</h1>
+  <div class="app">
+    <header>
+      <h1>📸 Posture Analysis</h1>
+      <p>Capture 3 photos: Front, Side & Back</p>
+    </header>
 
-  <div id="container">
-    <!-- ✅ These 3 attributes are CRITICAL for mobile support -->
-    <video id="video" autoplay muted playsinline></video>
-    <canvas id="output"></canvas>
+    <main>
+      <div class="form-section">
+        <input type="text" id="patient-name" placeholder="Patient Name" />
+        <input type="date" id="date" />
+        <textarea id="remarks" placeholder="Remarks..."></textarea>
+      </div>
+
+      <div id="camera-container">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" style="display: none;"></canvas>
+      </div>
+
+      <div class="controls">
+        <button id="start-camera">Start Camera</button>
+        <button id="click-photo" disabled>Click Photo</button>
+        <button id="analyze" disabled>Analyze</button>
+        <button id="reset">Reset</button>
+        <p id="photo-count">Photos Taken: 0/3</p>
+      </div>
+
+      <div id="report" style="display: none;"></div>
+    </main>
   </div>
 
-  <section id="metrics">
-    <h2>Live Posture Metrics</h2>
-    <ul>
-      <li>Head Horizontal Offset: <span id="headOffset">--</span> px</li>
-      <li>Head Tilt: <span id="headTilt">--</span>°</li>
-      <li>Shoulder Tilt: <span id="shoulderTilt">--</span>°</li>
-      <li>Spine Tilt: <span id="spineTilt">--</span>°</li>
-      <li>Hip Tilt: <span id="hipTilt">--</span>°</li>
-      <li>Pelvic Tilt: <span id="pelvicTilt">--</span>°</li>
-      <li>Knee Valgus/Varus Angle (L / R): 
-        <span id="kneeAngleLeft">--</span>° / <span id="kneeAngleRight">--</span>°
-      </li>
-    </ul>
-    <button id="captureBtn">Capture Posture Report</button>
-  </section>
-
-  <!-- ✅ Load your JS last, when HTML is ready -->
   <script src="script.js"></script>
 </body>
 </html>
