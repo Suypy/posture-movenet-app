@@ -247,5 +247,5 @@ window.addEventListener('DOMContentLoaded', () => {
     link.href = dataurl;
     link.click();
   });
-
+  setup().then(detectloop);
 });
