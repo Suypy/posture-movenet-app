@@ -173,15 +173,24 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   async function setupcamera() {
+  try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      audio: false,
-      video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } }
+      video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
+      audio: false
     });
     video.srcObject = stream;
+
     return new Promise(resolve => {
-      video.onloadedmetadata = () => resolve(video);
+      video.onloadedmetadata = () => {
+        console.log('✅ Camera stream loaded');
+        resolve(video);
+      };
     });
+  } catch (error) {
+    console.error('❌ Camera access failed:', error);
+    alert('Camera access denied. Please allow camera and refresh.');
   }
+}
 
   async function setup() {
   await setupcamera();
