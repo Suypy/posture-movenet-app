@@ -25,14 +25,11 @@ h1 {
 
 /* Video hidden but used for detection */
 #video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;         /* Invisible */
-  width: 640px;       /* Size required for camera to capture */
+  opacity: 1;
+  z-index: 1;
+  position: relative;
+  width: 640px;
   height: 480px;
-  z-index: -1;        /* Behind the canvas */
-  pointer-events: none; /* Prevents accidental clicks */
 }
 
 /* Canvas for drawing skeleton */
