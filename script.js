@@ -184,17 +184,21 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   async function setup() {
-    await setupcamera();
-    video.play();
-    videowidth = video.videoWidth;
-    videoheight = video.videoHeight;
-    canvas.width = videowidth;
-    canvas.height = videoheight;
+  await setupcamera();
+  video.play();
+  videowidth = video.videoWidth;
+  videoheight = video.videoHeight;
+  canvas.width = videowidth;
+  canvas.height = videoheight;
 
-    detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, {
-      modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING
-    });
-  }
+  const poseDetectionModule = await import('https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection');
+  const { SupportedModels, movenet } = poseDetectionModule;
+
+  detector = await poseDetectionModule.createDetector(SupportedModels.MoveNet, {
+    modelType: movenet.modelType.SINGLEPOSE_LIGHTNING
+  });
+}
+
 
   async function detectloop() {
     const poses = await detector.estimatePoses(video);
