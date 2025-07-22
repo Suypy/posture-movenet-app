@@ -28,9 +28,11 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  visibility: hidden;
-  width: 1px;
-  height: 1px;
+  opacity: 0;         /* Invisible */
+  width: 640px;       /* Size required for camera to capture */
+  height: 480px;
+  z-index: -1;        /* Behind the canvas */
+  pointer-events: none; /* Prevents accidental clicks */
 }
 
 /* Canvas for drawing skeleton */
